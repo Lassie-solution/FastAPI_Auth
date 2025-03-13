@@ -2,7 +2,8 @@ import os
 import secrets
 from typing import Any, Dict, List, Optional, Union
 
-from pydantic import AnyHttpUrl, BaseSettings, EmailStr, PostgresDsn, validator
+from pydantic import AnyHttpUrl, EmailStr, PostgresDsn, validator
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
@@ -13,6 +14,7 @@ class Settings(BaseSettings):
     
     # Database
     DATABASE_URL: str = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/chatapp")
+    DIRECT_URL: str = os.getenv("DIRECT_URL", "postgresql://postgres:postgres@localhost:5432/chatapp")
     
     # CORS
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []

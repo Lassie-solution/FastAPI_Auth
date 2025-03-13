@@ -1,3 +1,13 @@
+from typing import Any, List
+
+from fastapi import APIRouter, Depends, HTTPException, Path, Query, status
+from prisma.models import Chat, Message, User
+
+from app.schemas.user import UserOut, UserUpdate
+from app.services.auth import get_current_admin_user, update_user
+
+router = APIRouter()
+
 @router.post("/google", response_model=Token)
 async def login_google(
     token: str = Body(..., embed=True),
