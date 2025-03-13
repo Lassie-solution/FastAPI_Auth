@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pydantic
+prisma
+python-jose
+passlib
+python-multipart
+email-validator
+httpx
+openai
+bcrypt
+PyJWT
+python-dotenv
+supabase
