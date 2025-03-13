@@ -1,10 +1,12 @@
-from typing import Any, List
+from fastapi import APIRouter, Body, Depends, HTTPException, status
+from typing import Any
+from datetime import timedelta
 
-from fastapi import APIRouter, Depends, HTTPException, Path, Query, status
-from prisma.models import Chat, Message, User
-
-from app.schemas.user import UserOut, UserUpdate
-from app.services.auth import get_current_admin_user, update_user
+from app.services.auth import get_current_active_user
+from app.core.config import settings
+from app.models.token import Token
+from app.models.user import User, UserOut, UserUpdate
+from app.services.auth import authenticate_google_user, authenticate_apple_user, update_user, create_access_token
 
 router = APIRouter()
 
